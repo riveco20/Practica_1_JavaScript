@@ -1,6 +1,4 @@
 (function(){
-
-
     self.Board= function(width,height){
         this.width = width;
         this.height = height;
@@ -8,22 +6,15 @@
         this.gameOver=false;
         this.bars=[];
         this.ball= null;
-        
     }
 
     self.Board.prototype ={
-
         get elements(){
             var elements = this.bars;
-            elements.push(this.ball);
+            //elements.push(this.ball);
             return elements;
         }
-
      }
-
-     
-    
-
 })();
 
 
@@ -44,14 +35,11 @@ self.Bar = function(x,y,whidth,height,board) {
 
 self.Bar.prototype ={
     down:function(){
-
         this.y+= this.speed;
-
     },
 
     up:function(){
         this.y -= this.speed;
-
     },
 
     toString:function(){
@@ -67,7 +55,7 @@ self.Bar.prototype ={
     self.BoardView = function(canvas,board){
         this.canvas = canvas;
         this.canvas.width = board.width;
-        this.canvas.height = board.height;;
+        this.canvas.height = board.height;
         this.board = board;
         this.ctx = canvas.getContext("2d");
 
@@ -83,7 +71,6 @@ self.Bar.prototype ={
         }
     };
     function draw(ctx,element){
-        if(element!== null && element.hasOwnProperty("kind")){
         switch(element.kind){
             case "rectangle":
             ctx.fillRect(element.x,element.y,element.width,element.height);
@@ -91,21 +78,22 @@ self.Bar.prototype ={
             
         }
     }
-    }
+    
 
 })();
 
 
 var board = new Board(800,400);
 var bar = new Bar(20,100,40,100,board);
-var bar = new Bar(700,100,40,100,board);
+var bar2 = new Bar(700,100,40,100,board);
 var canvas = document.getElementById('canvas');
 var boardview = new BoardView(canvas,board)
 
 
 
-document.addEventListener("keydown",function(ev){
 
+document.addEventListener("keydown",function(ev){
+ev.preventDefault();
     if(ev.keyCode==38){
         bar.up();
 
@@ -116,17 +104,18 @@ document.addEventListener("keydown",function(ev){
     }
 
 
-    
+    else if(ev.keyCode==87){
+         bar2.up();
+    }
 
-
+    else if(ev.keyCode==83){
+        bar2.down();
+    }
 });
 
+window.requestAnimationFrame(controller);
 
-self.addEventListener("load",main);
-
-
-
-function main(){
-
+function controller(){
     boardview.draw();
+    window.requestAnimationFrame(controller);
 };
