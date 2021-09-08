@@ -199,7 +199,9 @@ self.Bar.prototype ={
 
 var board = new Board(800,400);
 var bar = new Bar(20,100,40,100,board);
-var bar2 = new Bar(700,100,40,100,board);
+var bar2 = new Bar(740,100,40,100,board);
+var bar3 = new Bar(0,0,800,5,board);
+var bar4= new Bar(0,395,800,5,board);
 var canvas = document.getElementById('canvas');
 var boardview = new BoardView(canvas,board)
 var ball = new Ball(350,100,10,board);
