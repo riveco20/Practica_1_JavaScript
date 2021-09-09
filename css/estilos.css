@@ -16,7 +16,7 @@ body{
 
 .contenedor{
     width: 1105px;
-    margin: 20px;
+    margin: 20px auto;
     overflow: hidden;
 }
 
@@ -126,14 +126,17 @@ aside .widget p{
 }
 
 canvas{
-    border:solid;}
-
+    border:solid;
+    background:blanchedalmond;
+  
+}
+    
 
 footer{
-    width: 1105px;
-    overflow: hidden;
+    width: 805px;
+    clear: both;
     background:black;
-    color:  15p;
+    color: #fff;
     padding:15px 0;
     text-align: center;
 
